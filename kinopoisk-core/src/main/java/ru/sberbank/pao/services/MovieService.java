@@ -1,9 +1,9 @@
 package ru.sberbank.pao.services;
 
-import ru.sberbank.pao.dao.api.MovieDAO;
-import ru.sberbank.pao.entities.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.sberbank.pao.dao.api.MovieDAO;
+import ru.sberbank.pao.entities.Movie;
 
 import java.util.List;
 
@@ -26,5 +26,13 @@ public class MovieService {
     public Movie createMovie(Movie movie) {
 
         return movieDAO.save(movie);
+    }
+
+    public List<Movie> saveAll(List<Movie> movies) {
+        return movieDAO.saveAll(movies);
+    }
+
+    public void cleanDB() {
+        movieDAO.deleteAll();
     }
 }

@@ -1,3 +1,6 @@
+server:
+  port: 8490
+
 spring:
   profiles:
     active: development

@@ -22,18 +22,27 @@ public class Movie {
 
     private Integer originalRateOrder;
 
-    private String title;
+    private String name;
 
-    private Long rate;
+    private String originalName;
+
+    private Double rate;
+
+    private String releaseDate;
+
+    private String amountOfVotes;
 
     public Movie() {
 
     }
 
-    public Movie(Long id, Integer originalRateOrder, String title, Long rate) {
-        this.id = id;
+    public Movie(Integer originalRateOrder, String name, String originalName, Double rate, String releaseDate, String amountOfVotes) {
         this.originalRateOrder = originalRateOrder;
-        this.title = title;
+        this.name = name;
+        this.originalName = originalName;
         this.rate = rate;
+        this.releaseDate = releaseDate;
+        this.amountOfVotes = amountOfVotes;
     }
+
 }

@@ -4,8 +4,8 @@ package ru.sberbank.pao.services.impl;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Service;
 import ru.sberbank.pao.dto.MovieDTO;
-import ru.sberbank.pao.services.api.Scraper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-
-public class KinopoiskScraper implements Scraper {
+@Service
+public class KinopoiskScraper {
 
 
     private Optional<Document> getDocument() {
@@ -31,8 +31,6 @@ public class KinopoiskScraper implements Scraper {
         return Optional.ofNullable(document);
     }
 
-
-    @Override
     public List<MovieDTO> getTop() {
         return getDocument().orElseThrow(NullPointerException::new)
                 .select("table.js-rum-hero tr")
@@ -75,7 +73,7 @@ public class KinopoiskScraper implements Scraper {
     }
 
     private String extractOriginalName(Element element) {
-        final Element originalNameElement = element.getElementsByTag("splan").first();
+        final Element originalNameElement = element.getElementsByTag("span").first();
         return originalNameElement == null ? "" : originalNameElement.text();
     }
 
