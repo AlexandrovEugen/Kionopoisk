@@ -13,7 +13,7 @@ import ru.sberbank.pao.transfrormers.MovieTransformer;
 import java.util.List;
 
 @RestController
-@RequestMapping("/top")
+@RequestMapping("/kinopoisk")
 public class MovieController {
 
 
@@ -29,25 +29,25 @@ public class MovieController {
     }
 
     @ApiOperation(value = "Save movie from site")
-    @PutMapping
+    @PutMapping("/createMovie")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
         return new ResponseEntity<>(movieService.createMovie(movie), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Get list of movies from top")
-    @GetMapping
+    @GetMapping("/top")
     public ResponseEntity<List<Movie>> getAll() {
         return new ResponseEntity<>(movieService.getMovies(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Fill db with data from Kinopoisk")
-    @PostMapping
+    @PostMapping("/fill")
     public ResponseEntity<List<Movie>> fillData() {
         return new ResponseEntity<>(movieService.saveAll(movieTransformer.fromListDTO(scraper.getTop())), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Clean db")
-    @DeleteMapping
+    @DeleteMapping("/clean")
     public ResponseEntity<Void> cleanDB() {
         movieService.cleanDB();
         return new ResponseEntity<>(HttpStatus.OK);
