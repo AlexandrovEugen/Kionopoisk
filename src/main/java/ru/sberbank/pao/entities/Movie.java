@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -28,7 +29,7 @@ public class Movie {
 
     private Double rate;
 
-    private String releaseDate;
+    private LocalDate releaseDate;
 
     private String amountOfVotes;
 
@@ -36,7 +37,7 @@ public class Movie {
 
     }
 
-    public Movie(Integer originalRateOrder, String name, String originalName, Double rate, String releaseDate, String amountOfVotes) {
+    public Movie(Integer originalRateOrder, String name, String originalName, Double rate, LocalDate releaseDate, String amountOfVotes) {
         this.originalRateOrder = originalRateOrder;
         this.name = name;
         this.originalName = originalName;

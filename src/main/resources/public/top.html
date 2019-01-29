@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+<head>
+    <meta charset="UTF-8">
+    <title>Kinopoisk</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body ng-app="Kinopoisk">
+<div class="container" style="margin-top: 30px" ng-controller="KinopoiskController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Топ 250 фильмов кинопоска</div>
+                <button id="myButton" class="float-left submit-button">Фильтр</button>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>position</th>
+                        <th>name</th>
+                        <th>original name</th>
+                        <th>rate</th>
+                        <th>release date</th>
+                        <th>votes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in movies">
+                        <td>{{item.position}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.originalName}}</td>
+                        <td>{{item.rate}}</td>
+                        <td>{{item.releaseYear}}</td>
+                        <td>{{item.votes}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "http://localhost:8490/topOf.html";
+    };
+</script>
+</body>
+</html>

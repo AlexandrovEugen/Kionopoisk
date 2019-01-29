@@ -1,4 +1,4 @@
-package ru.sberbank.pao.services.impl;
+package ru.sberbank.pao.services;
 
 
 import org.jsoup.Jsoup;
