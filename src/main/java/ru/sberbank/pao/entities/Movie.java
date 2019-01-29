@@ -4,17 +4,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
+@Table(
+        uniqueConstraints = @UniqueConstraint(columnNames = {"originalRateOrder", "name", "originalName"})
+)
 @Entity
 @Getter
 @ToString
 @EqualsAndHashCode
-public class Movie {
+public class Movie implements Serializable {
+
+    private static final long serialVersionUID = 7156526077883281623L;
 
 
     @Id

@@ -1,10 +1,12 @@
 package ru.sberbank.pao.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
+@EqualsAndHashCode
 public class MovieDTO {
 
     private final Integer position;

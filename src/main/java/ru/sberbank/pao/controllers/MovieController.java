@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,7 @@ public class MovieController {
             @ApiImplicitParam(name = "year", value = "year of all movies that we want to list",
                     required = true, dataType = "string")
     })
+    @Cacheable(value = "movies", key = "#year")
     @GetMapping("/top/{top}/of{year}")
     public ResponseEntity<List<MovieDTO>> getTopMoviesOf(@PathVariable("top") int top, @PathVariable("year") String year) {
         return new ResponseEntity<>(movieTransformer.toListDTO(movieService.getTopMoviesOf(top, year)), HttpStatus.OK);
