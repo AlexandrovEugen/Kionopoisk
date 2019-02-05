@@ -7,9 +7,9 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/kinopoisk_db
-    username: postgres
-    password: admin
+    url: jdbc:postgresql://db:5432/kinopoisk_db
+    username: kinopoisk_db_user
+    password: kinopoisk_db_password
   # JPA properties
   jpa:
     hibernate:

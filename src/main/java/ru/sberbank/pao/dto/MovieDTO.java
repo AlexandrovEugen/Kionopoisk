@@ -4,10 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Getter
 @ToString
 @EqualsAndHashCode
-public class MovieDTO {
+public class MovieDTO implements Serializable {
+
+    private static final long serialVersionUID = 7156526077883281623L;
 
     private final Integer position;
     private final String name;

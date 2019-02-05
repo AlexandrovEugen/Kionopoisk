@@ -1,0 +1,34 @@
+version: '3.2'
+
+services:
+
+  db:
+    ports:
+      - 5000:5432
+    environment:
+      - "FILLA_DB_USER=kinopoisk_db_user"
+      - "FILLA_DB_PASSWORD=kinopoisk_db_password"
+      - "FILLA_DB_DATABASE=kinopoisk_db"
+      - "POSTGRES_PASSWORD=password"
+    build: ./db
+    networks:
+      - app
+    restart: always
+
+  kinopoisk-core:
+    container_name: core
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 8490:8490
+    networks:
+      - app
+networks:
+  app:
+
+
+
+
