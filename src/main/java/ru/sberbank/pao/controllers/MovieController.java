@@ -51,8 +51,8 @@ public class MovieController {
     })
     @Cacheable(value = "movies", key = "#year")
     @GetMapping("/top/{top}/of{year}")
-    public ResponseEntity<List<MovieDTO>> getTopMoviesOf(@PathVariable("top") int top, @PathVariable("year") String year) {
-        return new ResponseEntity<>(movieTransformer.toListDTO(movieService.getTopMoviesOf(top, year)), HttpStatus.OK);
+    public List<MovieDTO> getTopMoviesOf(@PathVariable("top") int top, @PathVariable("year") String year) {
+        return movieTransformer.toListDTO(movieService.getTopMoviesOf(top, year));
     }
 
 

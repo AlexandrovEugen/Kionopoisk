@@ -15,6 +15,13 @@ services:
       - app
     restart: always
 
+  cache:
+    container_name: redis-cache
+    image: redis:alpine
+    hostname: redis
+    ports:
+      - 6379:6379
+
   kinopoisk-core:
     container_name: core
     build:
@@ -22,6 +29,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - db
+      - cache
     ports:
       - 8490:8490
     networks:
